@@ -1,14 +1,15 @@
 {
-  "name": "nucleus-dark-ui",
+  "name": "fathom-ui",
   "theme": "ui",
-  "version": "0.7.4",
-  "description": "An adaptable UI with your favorite syntax theme at its core!",
+  "version": "0.1.0",
+  "description": "A minimalism and adaptable UI",
   "keywords": [
     "dark",
     "adaptive",
+    "minimal",
     "ui"
   ],
-  "repository": "https://github.com/ignism/nucleus-dark-ui",
+  "repository": "https://github.com/jeffpamer/fathom-ui",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"

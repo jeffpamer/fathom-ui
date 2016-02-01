@@ -3,88 +3,132 @@
 @import "octicon-mixins";
 
 status-bar {
-  .text(subtle);
-  background: @base-background-color;
-  height: @input-height;
-  line-height: @component-line-height;
-  font-size: 11px;
+    .text(subtle);
+    background: @base-background-color;
+    height: @input-height;
+    line-height: @component-line-height;
+    font-family: "Input Mono Narrow";
+    padding-left: 10em;
 
-  & > .flexbox-repaint-hack {
-    padding-top: 3px;
-  }
+    & > .flexbox-repaint-hack {
+        padding-top: 3px;
+        padding-left: 7em;
+    }
 
-  span {
-    font-size: 11px;
-  }
+    span {
+        font-size: 11px;
+    }
+
+    #status-bar-vim-mode {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 7em;
+        line-height: @input-height;
+        text-align: center;
+        text-transform: uppercase;
+        color: @base-background-color;
+
+        &.status-bar-vim-mode-insert {
+            background-color: @theme-green;
+        }
+
+        &.status-bar-vim-mode-normal {
+            background-color: @theme-orange;
+        }
+
+        &.status-bar-vim-mode-visual {
+            background-color: @theme-blue;
+        }
+    }
+
+    .line-ending-tile {
+        display: none;
+    }
+
+    .encoding-status {
+        display: none;
+    }
 }
 
 .platform-darwin .close-icon:before {
-  content: '✕' !important;
+    content: '✕' !important;
 }
 
 .platform-darwin .icon-x:before {
-  content: '✕' !important;
+    content: '✕' !important;
 }
 
 .platform-darwin .icon.x:before {
-  content: '✕' !important;
+    content: '✕' !important;
 }
 
 .project-find,
 .find-and-replace {
-  .btn-group-find .btn {
-    .button-variant(@text-color-info);
-  }
-
-  .btn-group-replace .btn,
-  .btn-group-replace-all .btn, {
-    .button-variant(@text-color-warning);
-  }
-
-  .find-meta-container {
-    top: 4px;
-
-    span {
-      font-size: 11px;
-      text-transform: uppercase;
+    .btn-group-find .btn {
+        .button-variant(@text-color-info);
     }
-  }
+
+    .btn-group-replace .btn,
+    .btn-group-replace-all .btn, {
+        .button-variant(@text-color-warning);
+    }
+
+    .find-meta-container {
+        top: 4px;
+
+        span {
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+    }
 }
 
 atom-notifications {
-  .text(normal);
-  top: 32px;
+    .text(normal);
+    top: 32px;
 
-  .close {
-    transition: all @transition-time ease;
+    .close {
+        transition: all @transition-time ease;
 
-    &:before {
-      color: fade(@theme-background-color, 50%);
+        &:before {
+            color: fade(@theme-background-color, 50%);
+        }
     }
-  }
-  .btn {
-    height: 24px !important;
-    line-height: 20px !important;
+    .btn {
+        height: 24px !important;
+        line-height: 20px !important;
 
-    &.close-all {
-      color: fade(@theme-background-color, 40%) !important;
-      border-color: fade(@theme-background-color, 40%) !important;
+        &.close-all {
+            color: fade(@theme-background-color, 40%) !important;
+            border-color: fade(@theme-background-color, 40%) !important;
 
-      &:hover {
-        color: @text-color-highlight !important;
-        background-color: fade(@theme-background-color, 40%) !important;
-        border-color: fade(@theme-background-color, 0%) !important;
-      }
+            &:hover {
+                color: @text-color-highlight !important;
+                background-color: fade(@theme-background-color, 40%) !important;
+                border-color: fade(@theme-background-color, 0%) !important;
+            }
+        }
     }
-  }
 }
 
 .background-message .message,
 .background-message li {
-  .text(subtle);
-  font-size: 24px;
+    .text(subtle);
+    font-size: 24px;
 
-  .keystroke {
+    .keystroke {
+        .text(normal);
+        color: @tooltip-key-text-color;
+        background: @tooltip-key-background-color;
+        font-size: 90%;
+        border: 1px solid @tooltip-key-text-color;
+        border-radius: @component-border-radius/2;
+        margin-left: @component-padding/2;
+    }
+}
+
+kbd {
     .text(normal);
     color: @tooltip-key-text-color;
     background: @tooltip-key-background-color;
@@ -92,134 +136,137 @@ atom-notifications {
     border: 1px solid @tooltip-key-text-color;
     border-radius: @component-border-radius/2;
     margin-left: @component-padding/2;
-  }
-}
-
-kbd {
-  .text(normal);
-  color: @tooltip-key-text-color;
-  background: @tooltip-key-background-color;
-  font-size: 90%;
-  border: 1px solid @tooltip-key-text-color;
-  border-radius: @component-border-radius/2;
-  margin-left: @component-padding/2;
 }
 
 .scrollbars-visible-always {
-  /deep/ ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-  }
-
-  /deep/ ::-webkit-scrollbar-track,
-  /deep/ ::-webkit-scrollbar-corner {
-    background: @scrollbar-track-color;
-  }
-
-  /deep/ ::-webkit-scrollbar-thumb {
-    border-radius: 5px;
-    border: 1px solid @scrollbar-border-color;
-    background: @scrollbar-color;
-    background-clip: content-box;
-
-    &:active,
-    &:hover {
-      border: 1px solid @scrollbar-border-color;
-      background: @scrollbar-color-active;
+    /deep/ ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
     }
-  }
 
-  atom-text-editor,
-  .settings-view {
     /deep/ ::-webkit-scrollbar-track,
     /deep/ ::-webkit-scrollbar-corner {
-      background: @base-background-color;
+        background: @scrollbar-track-color;
     }
 
     /deep/ ::-webkit-scrollbar-thumb {
-      border: 1px solid @base-background-color;
-      background: @scrollbar-color;
-      &:active,
-      &:hover {
-        border: 1px solid @base-background-color;
-      }
+        border-radius: 5px;
+        border: 1px solid @scrollbar-border-color;
+        background: @scrollbar-color;
+        background-clip: content-box;
+
+        &:active,
+        &:hover {
+            border: 1px solid @scrollbar-border-color;
+            background: @scrollbar-color-active;
+        }
     }
-  }
+
+    atom-text-editor,
+    .settings-view {
+        /deep/ ::-webkit-scrollbar-track,
+        /deep/ ::-webkit-scrollbar-corner {
+            background: @base-background-color;
+        }
+
+        /deep/ ::-webkit-scrollbar-thumb {
+            border: 1px solid @base-background-color;
+            background: @scrollbar-color;
+            &:active,
+            &:hover {
+                border: 1px solid @base-background-color;
+            }
+        }
+    }
 }
 
 .well {
-  border-radius: @component-border-radius;
+    border-radius: @component-border-radius;
 }
 
 // input -----------------------------------------------------------------------
 atom-text-editor[mini],
 atom-text-editor[mini]::shadow {
-  transition: all @transition-time ease;
-  color: @text-color-highlight;
-  background-color: @input-background-color;
-  border: 1px solid @input-background-color;
-  border-radius: @component-border-radius;
-  padding-left: @component-padding / 2;
-  height: @input-height;
-  max-height: @input-height;
-  line-height: @input-height - 2px;
-
-  &:hover {
-    border: 1px solid @input-border-color !important;
-    color: @text-color-highlight !important;
-  }
-
-  .placeholder-text {
-    .text(subtle);
+    transition: all @transition-time ease;
+    color: @text-color-highlight;
+    background-color: @input-background-color;
+    border: 1px solid @input-background-color;
+    border-radius: @component-border-radius;
+    padding-left: @component-padding / 2;
     height: @input-height;
+    max-height: @input-height;
     line-height: @input-height - 2px;
-  }
 
-  .cursor {
-    border-color: @text-color;
-  }
+    &:hover {
+        border: 1px solid @input-border-color !important;
+        color: @text-color-highlight !important;
+    }
 
-  .selection .region {
-    background-color: @background-color-highlight !important;
-  }
+    .placeholder-text {
+        .text(subtle);
+        height: @input-height;
+        line-height: @input-height - 2px;
+    }
+
+    .cursor {
+        border-color: @text-color;
+    }
+
+    .selection .region {
+        background-color: @background-color-highlight !important;
+    }
 }
 
 atom-text-editor[mini].is-focused,
 atom-text-editor[mini].is-focused::shadow {
-  border: 1px solid @text-color-highlight;
-  background-color: @input-background-color-active;
+    border: 1px solid @text-color-highlight;
+    background-color: @input-background-color-active;
 
-  &:hover {
-    border: 1px solid @text-color-highlight !important;
-    background-color: @input-background-color-active !important;
-    color: @text-color-highlight !important;
-  }
+    &:hover {
+        border: 1px solid @text-color-highlight !important;
+        background-color: @input-background-color-active !important;
+        color: @text-color-highlight !important;
+    }
 
-  .selection .region {
-    background-color: @background-color-highlight !important;
-  }
+    .selection .region {
+        background-color: @background-color-highlight !important;
+    }
 }
 
+/*atom-text-editor.vim-mode.normal-mode::shadow .cursor,
+atom-text-editor.vim-mode.operator-pending-mode::shadow .cursor,
+atom-text-editor.vim-mode.visual-mode::shadow .cursor,
+atom-text-editor.vim-mode.normal-mode .cursor,
+atom-text-editor.vim-mode.operator-pending-mode .cursor,
+atom-text-editor.vim-mode.visual-mode .cursor {
+    background-color: @theme-orange !important;
+    opacity: 0.5 !important;
+}
+
+atom-text-editr.is-focused .cursor {
+    border-color: @theme-green !important;
+}*/
+
 input[type="checkbox"] {
-  &:focus {
-    box-shadow: none !important;
-  }
-  &:before,
-  &:after {
-    background: @base-background-color;
-  }
+    &:focus {
+        box-shadow: none !important;
+    }
+    &:before,
+    &:after {
+        background: @base-background-color;
+    }
 }
 
 select.form-control {
-  .button(@button-border-color);
-  .text(normal);
-  height: @input-height;
-  line-height: @input-height;
-  text-transform: none;
+    .button(@button-border-color);
+    .text(normal);
+    height: @input-height;
+    line-height: @input-height;
+    text-transform: none;
 
-  &:focus,
-  &:hover {
-   background: @button-border-color !important;
-   color: @base-background-color !important;
-  }
+    &:focus,
+    &:hover {
+        background: @button-border-color !important;
+        color: @base-background-color !important;
+    }
 }
