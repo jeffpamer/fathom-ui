@@ -7,12 +7,10 @@ status-bar {
     background: @base-background-color;
     height: @input-height;
     line-height: @component-line-height;
-    font-family: "Input Mono Narrow";
     padding-left: 10em;
 
     & > .flexbox-repaint-hack {
         padding-top: 3px;
-        padding-left: 7em;
     }
 
     span {
@@ -52,29 +50,19 @@ status-bar {
             text-align: center;
             color: @base-background-color;
         }
+
+        &::before {
+            position: absolute;
+            font-size: 2em;
+            line-height: 1.4em;
+            right: -0.5em;
+            content: '';
+            color: @theme-green;
+        }
     }
 
     .file-info {
-        position: relative;
-        background-color: gray;
-        line-height: @input-height;
-        height: @input-height;
-        padding: 0;
-        border-radius: 5px 5px 0 0;
-        overflow: visible;
-        z-index: 5;
-
-        &::before {
-            color: gray;
-            position: absolute;
-            top: 0px;
-            content: '⭓';
-            width: 0.5em;
-            height: @input-height;
-            margin-left: -0.5em;
-            font-size: 2.6em;
-            z-index: 4;
-        }
+        padding-left: 3em;
     }
 
     .line-ending-tile {
