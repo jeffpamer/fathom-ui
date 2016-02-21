@@ -16,7 +16,7 @@
     text-align: center;
     color: @text-color-subtle;
     background: @tab-background-color;
-    display: table-cell;
+    display: none;
     width: 100%;
     height: @tab-height;
     line-height: @tab-height;
@@ -25,10 +25,12 @@
     border-right: 1px solid transparent;
     border-top: 1px solid transparent;
     border-bottom: 1px solid @tab-border-color;
-    padding-left: 20px !important;
-    padding-right: 20px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
     position: relative;
     transition: all @transition-time ease;
+    text-transform: uppercase;
+    text-align: left;
 
     .status-modified,
     .status-added,
@@ -59,19 +61,23 @@
     }
   }
 
+  .tab.active {
+      display: table-cell;
+  }
+
   .tab.active,
   .tab:hover.active {
     color: @text-color-selected;
+    border-color: @text-color-selected;
     background: @tab-background-color-active;
     width: 100%;
-    border-top: 1px solid @base-border-color;
-    border-bottom: 1px solid transparent;
-    border-left: 1px solid @base-border-color;
-    border-right: 1px solid @base-border-color;
+    border: none;
 
     & .title {
+      padding: 0 1em;
       color: @text-color-selected;
-      padding: 0;
+      border-color: @text-color-selected;
+      border-bottom: 1px dashed;
     }
 
     &:first-child {
@@ -84,14 +90,22 @@
 
     .status-modified {
       color: @text-color-modified;
+      border-color: inherit;
     }
 
     .status-added {
       color: @text-color-added;
+      border-color: inherit;
     }
 
     .status-ignored {
       color: @text-color-ignored;
+      border-color: inherit;
+    }
+
+    &.modified .title::before {
+        content: "*";
+        position: relative;
     }
   }
 
@@ -99,86 +113,9 @@
   .tab.active[data-type="TextEditor"] {
     color: @syntax-text-color;
     background: @syntax-background-color;
-
-    .close-icon:before {
-      color: @text-color-highlight;
-    }
-
-    .close-icon:hover {
-      background: mix(@syntax-text-color, @syntax-background-color, 20%);
-    }
-
-    .close-icon:hover:before {
-      color: @text-color-highlight;
-    }
   }
-
-  .tab.modified:hover .close-icon:before {
-    color: @text-color-warning;
-  }
-
-  .tab.modified:not(:hover) .close-icon {
-    opacity: 1;
-    transform: scale(1);
-    top: 12px;
-    right: 8px;
-    display: inline-block;
-    border-color: @background-color-warning;
-    border-width: 1px;
-  }
-
-  .tab.modified .close-icon:hover {
-    background: @background-color-warning !important;
-    border-width: 1px;
-
-    &:before {
-      color: @text-color-highlight;
-    }
-  }
-
 
   .tab .close-icon {
-    top: (@tab-height - 16) / 2;
-    height: 16px;
-    width: 16px;
-    left: auto;
-    right: 4px;
-    position: absolute;
-    transform: scale(0);
-    opacity: 0;
-    border-radius: 2px;
-    transition: transform @transition-time ease, color @transition-time ease, background @transition-time ease;
-
-    &:before {
-      color: @text-color-highlight;
-      font-size: 12px;
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      width: 13px;
-      height: 12px;
-    }
-
-    &:hover {
-      background: @tab-background-color;
-    }
-  }
-
-  .tab:hover .close-icon {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-.platform-darwin {
-  .tab .close-icon {
-    left: 4px !important;
-    right: auto !important;
-  }
-
-  .tab.modified:not(:hover) .close-icon {
-    top: 12px !important;
-    left: 8px !important;
-    right: auto !important;
+      display: none;
   }
 }

@@ -2,31 +2,42 @@
 @import "ui-mixins.less";
 @import "octicon-mixins";
 
+atom-workspace:not(:empty) {
+    padding: 2em;
+}
+
+atom-panel-container.left:not(:empty) {
+    margin-right: 2em;
+}
+
 status-bar {
     .text(subtle);
     background: @base-background-color;
     height: @input-height;
     line-height: @component-line-height;
-    padding-left: 10em;
+    text-transform: uppercase;
 
     & > .flexbox-repaint-hack {
-        padding-top: 3px;
+        padding-top: 2px;
     }
 
-    span {
-        font-size: 11px;
+    .status-bar-left {
+      padding-left: 10em;
+    }
+
+    .file-info, linter-bottom-container {
+        display: none;
     }
 
     #status-bar-vim-mode {
         position: absolute;
         top: 0;
         left: 0;
-        width: 3.3em;
         z-index: 1;
         line-height: @input-height;
+        color: @theme-background-color;
         text-align: center;
-        text-transform: uppercase;
-        color: transparent;
+        width: 10em;
 
         &.status-bar-vim-mode-insert {
             background-color: @theme-green;
@@ -39,30 +50,6 @@ status-bar {
         &.status-bar-vim-mode-visual {
             background-color: @theme-blue;
         }
-
-        &::after {
-            position: absolute;
-            font-size: 1.5em;
-            content: 'Ω';
-            padding-top: 1px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            color: @base-background-color;
-        }
-
-        &::before {
-            position: absolute;
-            font-size: 2em;
-            line-height: 1.4em;
-            right: -0.5em;
-            content: '';
-            color: @theme-green;
-        }
-    }
-
-    .file-info {
-        padding-left: 3em;
     }
 
     .line-ending-tile {

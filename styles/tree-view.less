@@ -16,9 +16,10 @@ atom-workspace {
         background: @tree-view-background-color;
         height: @tab-height;
         line-height: @tab-height;
+        margin-top: 1px;
+        border-bottom: 1px dashed @text-color;
 
         & span {
-          .text(bold);
           color: @text-color-highlight;
           transition: all @transition-time ease;
 
@@ -68,6 +69,7 @@ atom-workspace {
 
       & > .entries {
         opacity: 1;
+        margin-top: 0.5em;
         padding-bottom: @component-padding;
         transition: all @transition-time ease;
       }
