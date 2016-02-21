@@ -7,7 +7,19 @@ atom-workspace:not(:empty) {
 }
 
 atom-panel-container.left:not(:empty) {
-    margin-right: 2em;
+    margin-right: 1em;
+}
+
+atom-pane {
+    margin: 0 0.5em;
+
+    &:first-child {
+        margin-left: 0;
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
 }
 
 status-bar {

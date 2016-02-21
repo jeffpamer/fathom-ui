@@ -3,20 +3,20 @@
 @import "octicon-mixins";
 
 .tab-bar {
-  background: @tab-bar-background-color;
+  background: @tool-panel-background-color;
   width: 100%;
   height: @tab-height;
   padding: 0;
+  padding-bottom: -1px;
   display: table;
   table-layout: fixed;
   -webkit-transform: scale(1);
-  margin-bottom: 0.5em;
 
   .tab {
     .text(normal);
     text-align: center;
     color: @text-color-subtle;
-    background: @tab-background-color;
+    background: @tool-panel-background-color;
     display: none;
     width: 100%;
     height: @tab-height;
@@ -25,13 +25,21 @@
     border-left: none !important;
     border-right: none !important;
     border-top: none !important;
-    border-bottom: 1px solid @tab-border-color;
+    border-bottom: 1px solid @tool-panel-background-color;
     padding-left: 0px !important;
     padding-right: 0px !important;
     position: relative;
     transition: all @transition-time ease;
     text-transform: uppercase;
     text-align: left;
+
+    .title {
+        padding: 0 1em;
+    }
+
+    .path {
+        right: 1em;
+    }
 
     .status-modified,
     .status-added,
@@ -53,8 +61,8 @@
 
     &:hover {
       color: @text-color-highlight;
-      background: @tab-background-color-hover;
-      border: 1px solid @base-border-color;
+      background: @tool-panel-background-color;
+      border: 1px solid @tool-panel-background-color;
 
       .close-icon {
         display: block;
@@ -70,13 +78,12 @@
   .tab:hover.active {
     color: @text-color-selected;
     border-color: @text-color;
-    background: @tab-background-color-active;
     width: 100%;
     border: none;
 
     & .title {
       color: @text-color-selected;
-      border-bottom: 1px dashed @text-color;
+      border-bottom: none;
     }
 
     &:first-child {
@@ -112,7 +119,7 @@
   .tab.active[data-type="MarkdownPreviewView"],
   .tab.active[data-type="TextEditor"] {
     color: @syntax-text-color;
-    background: @syntax-background-color;
+    background: @tool-panel-background-color;
   }
 
   .tab .close-icon {
