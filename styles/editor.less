@@ -2,10 +2,12 @@
 @import "ui-mixins.less";
 @import "octicon-mixins";
 
-atom-text-editor,
-atom-text-editor::shadow,
+atom-text-editor:not([mini]),
+atom-text-editor:not([mini])::shadow,
 :host {
   padding-top: 0.5em;
+  margin-left: -1em;
+
   .wrap-guide {
     background: @indent-guide-color;
   }
