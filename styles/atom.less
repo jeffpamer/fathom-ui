@@ -22,7 +22,7 @@ status-bar {
     }
 
     .status-bar-left {
-      padding-left: 10em;
+      padding-left: 7em;
     }
 
     .file-info, linter-bottom-container {
@@ -37,7 +37,7 @@ status-bar {
         line-height: @input-height;
         color: @theme-background-color;
         text-align: center;
-        width: 10em;
+        width: 7em;
 
         &.status-bar-vim-mode-insert {
             background-color: @theme-green;
@@ -58,6 +58,28 @@ status-bar {
 
     .encoding-status {
         display: none;
+    }
+
+    .git-status {
+        color: @text-color-modified;
+
+        .icon::before {
+            display: none;
+        }
+    }
+
+    .lisp-paredit-status {
+        display: none;
+
+        .enabled-status {
+            font-size: inherit !important;
+        }
+    }
+}
+
+status-bar:hover {
+    .lisp-paredit-status {
+        display: inline-block;
     }
 }
 

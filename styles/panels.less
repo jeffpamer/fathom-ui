@@ -7,19 +7,14 @@ atom-panel {
   background: @tool-panel-background-color;
 
   &.bottom > *:not(:empty) {
-    background: @app-background-color;
-    padding-top: @component-padding/2;
-    padding-left: @component-padding;
-    padding-right: @component-padding;
+    background: @tool-panel-background-color;
+    padding: 0.5em;
     z-index: 3;
-    border-top: 1px solid darken(@text-color, 25%);
   }
 }
 
 atom-panel-container {
   &.bottom {
-    margin-top: 2px;
-    border-top: 2px solid darken(@text-color, 30%);
     z-index: 3;
   }
 }

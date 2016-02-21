@@ -21,9 +21,9 @@
     height: @tab-height;
     line-height: @tab-height;
     box-sizing: border-box;
-    border-left: 1px solid transparent;
-    border-right: 1px solid transparent;
-    border-top: 1px solid transparent;
+    border-left: none !important;
+    border-right: none !important;
+    border-top: none !important;
     border-bottom: 1px solid @tab-border-color;
     padding-left: 0px !important;
     padding-right: 0px !important;
@@ -68,7 +68,7 @@
   .tab.active,
   .tab:hover.active {
     color: @text-color-selected;
-    border-color: @text-color-selected;
+    border-color: @text-color;
     background: @tab-background-color-active;
     width: 100%;
     border: none;
@@ -76,8 +76,7 @@
     & .title {
       padding: 0 1em;
       color: @text-color-selected;
-      border-color: @text-color-selected;
-      border-bottom: 1px dashed;
+      border-bottom: 1px dashed @text-color;
     }
 
     &:first-child {
@@ -103,9 +102,10 @@
       border-color: inherit;
     }
 
-    &.modified .title::before {
-        content: "*";
-        position: relative;
+    &.modified .title::after {
+      content: " *";
+      color: @text-color-removed;
+      position: relative;
     }
   }
 
